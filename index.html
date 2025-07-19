@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S. Jahnavi | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <section id="home">
+    <h1>S. Jahnavi</h1>
+    <p>AI Enthusiast & Web Developer</p>
+    <p>Passionate about building intelligent and user-friendly applications.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m S. Jahnavi, a B.Tech (CSE-AIML) student at G. Pulla Reddy Engineering College, passionate about Artificial Intelligence and web development. 
+      I enjoy building innovative solutions that solve real-world problems and have hands-on experience in AI projects, internships, and various technical activities.
+    </p>
+    <h3>Educational Background</h3>
+    <ul>
+      <li><strong>B.Tech (CSE-AIML):</strong> G. Pulla Reddy Engineering College, JNTUA, CGPA: 8.92 (2026)</li>
+      <li><strong>Intermediate:</strong> RGUKT, CGPA: 9.60 (2022)</li>
+      <li><strong>SSC:</strong> Narayana High School, BSEAP, CGPA: 10 (2020)</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>
+        HTML
+        <progress value="90" max="100"></progress>
+      </li>
+      <li>
+        CSS
+        <progress value="85" max="100"></progress>
+      </li>
+      <li>
+        JavaScript
+        <progress value="75" max="100"></progress>
+      </li>
+      <li>
+        Python
+        <progress value="80" max="100"></progress>
+      </li>
+      <li>
+        PyTorch
+        <progress value="70" max="100"></progress>
+      </li>
+      <li>
+        Streamlit
+        <progress value="85" max="100"></progress>
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects & Experience</h2>
+    <div class="projects-container">
+
+      <div class="project-card">
+        <h3>UNT-GPREC Health Informatics Internship (May–Jun 2025)</h3>
+        <ul>
+          <li>Performing data labeling checks and implementing data augmentation strategies.</li>
+          <li>Using PyTorch to develop CNN-based models for medical image classification.</li>
+          <li>Building an explainability agent to visualize model decisions.</li>
+          <li>Developing a clinician-facing UI with Streamlit for easier model interaction.</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>AICTE Internship on AI (Feb–Mar 2025)</h3>
+        <ul>
+          <li>Created an AI-based diagnosis app in Streamlit for diseases like Diabetes, Heart Disease, and Lung Cancer.</li>
+          <li>Trained models using medical datasets and ensured high accuracy.</li>
+          <li>Collaborated via Git to build a practical, user-friendly solution.</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>Chatbot for College Queries</h3>
+        <ul>
+          <li>Developed a Java-based chatbot for student FAQs.</li>
+          <li>Automated answers for queries related to admission, timetable, and campus facilities.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> 229x1a3392@gprec.ac.in</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/s-jahnavi-b9036b259/" target="_blank" rel="noopener noreferrer">s-jahnavi</a></p>
+    </div>
+  </section>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill all the fields!");
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      alert(`Thanks for reaching out, ${name}! I will get back to you soon.`);
+
+      this.reset();
+    });
+
+    function animateSkills() {
+      const skillsSection = document.getElementById('skills');
+      const progressBars = skillsSection.querySelectorAll('progress');
+
+      const rect = skillsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        progressBars.forEach(bar => {
+          const val = bar.getAttribute('value');
+          bar.style.width = '0%';  
+
+          let width = 0;
+          const interval = setInterval(() => {
+            if (width >= val) {
+              clearInterval(interval);
+            } else {
+              width++;
+              bar.style.width = width + '%';
+            }
+          }, 10);
+        });
+
+        window.removeEventListener('scroll', animateSkills);
+      }
+    }
+
+    window.addEventListener('scroll', animateSkills);
+
+    window.addEventListener('load', animateSkills);
+  </script>
+</body>
+</html>
